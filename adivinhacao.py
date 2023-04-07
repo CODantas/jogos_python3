@@ -16,7 +16,7 @@ def jogar():
     nivel = int(input("Defina o nível: "))
 
     if(nivel == 1):
-        total_de_tentativas = 20
+        total_de_tentativas = 15
     elif(nivel == 2):
         total_de_tentativas = 10
     else:
@@ -47,7 +47,8 @@ def jogar():
                 print("Você errou! O seu chute foi menor do que o número secreto.")
             pontos_perdidos = abs(numero_secreto - chute)
             pontos = pontos - pontos_perdidos
-
+        if(rodada == total_de_tentativas):
+            print("O número secreto era {}.".format(numero_secreto))
     print("Fim do jogo")
 
 if(__name__ == "__main__"):
