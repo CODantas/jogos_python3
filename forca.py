@@ -1,6 +1,5 @@
 import random
 
-
 def jogar():
 
     imprime_mensagem_abertura()
@@ -13,19 +12,20 @@ def jogar():
     acertou = False
     erros = 0
 
-    #enquanto
+    
     while(not enforcou and not acertou):
 
         chute = pede_chute()
 
-        if(chute in palavra_secreta):             # type: ignore
+        if(chute in palavra_secreta):        
             marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
             desenha_forca(erros)
 
-        enforcou = erros == 6
+        enforcou = erros == 7
         acertou = "_" not in letras_acertadas
+
         print(letras_acertadas)
 
     if(acertou):
@@ -125,7 +125,7 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
     for letra in palavra_secreta:
         if(chute == letra):
             letras_acertadas[index] = letra
-            index += 1
+        index += 1
 
 
 def pede_chute():
@@ -149,11 +149,11 @@ def carrega_palavra_secreta():
         linha = linha.strip()
         palavras.append(linha)
 
-        arquivo.close()
+    arquivo.close()
 
-        numero = random.randrange(0, len(palavras))
-        palavra_secreta = palavras[numero].upper()
-        return palavra_secreta
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].upper()
+    return palavra_secreta
 
 if(__name__ == "__main__"):
     jogar()
